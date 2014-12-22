@@ -10,4 +10,7 @@ if (!file_exists($autoload)) {
     );
 }
 
+define('TEST_ASSETS', __DIR__.'/Assets/');
+
 require $autoload;
+
