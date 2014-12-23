@@ -15,6 +15,10 @@ class HtmlScraper
         $this->setConfig($config);
     }
 
+    /**
+     * This is the main entry point to the scraper, it assumes that html and configuration have been set
+     * @return array
+     */
     public function scrape()
     {
         $parser              = $this->createHtmlParser();

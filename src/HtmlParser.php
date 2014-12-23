@@ -6,7 +6,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 /**
  * @TODO this class is currently covered by the HtmlScraper SmokeTest, but upon further refactoring should have own tests.
- * @TODO also the api could be improved
+ * @TODO also the api could be improved, it behaves more like a utility class at the moment
  */
 class HtmlParser
 {

@@ -2,6 +2,9 @@
 
 namespace Scrapertests\Lib;
 
+/**
+ * Needed because for our local html files we need to append file extensions, otherwise we have a conflict between the asset liverpool (html) and liverpool(folder)
+ */
 class TestHttpClient extends \Scraper\HtmlClient
 {
 

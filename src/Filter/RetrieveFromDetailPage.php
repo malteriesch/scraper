@@ -2,6 +2,9 @@
 
 namespace Scraper\Filter;
 
+/**
+ * A filter that can in itself traverse to detail pages and select an array of matched html
+ */
 class RetrieveFromDetailPage implements FilterInterface
 {
 
@@ -27,7 +30,7 @@ class RetrieveFromDetailPage implements FilterInterface
 
     /**
      *
-     * @return Array $value
+     * @return Array $path 
      */
     protected function getNodesHtml($path)
     {
@@ -44,6 +47,11 @@ class RetrieveFromDetailPage implements FilterInterface
         return $results;
     }
 
+    /**
+     * Here the $value is a url scraped from a link and represents the detail page
+     * @param type $value
+     * @return array
+     */
     public function __invoke($value)
     {
         return $this->getNodesHtml($value);

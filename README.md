@@ -54,3 +54,8 @@ Technologies Used
 * ZfConsole for the Console Application framework (depends on Zend Framework 2)
 * vfsStream to mock file systems
 * TDD: Unit and Functional tests 
+
+The main test coverage is pretty much through the happy path, and the functional test (in tests/Functional) does a lot of the heavy lifting. 
+The unit tests have been pragmatic, as to be specific enough to catch obvious errors, but they can be boosted up with more boundary conditions. 
+Additionally, the unit tests also quite often have a general smoke test to test general happy-path functionality, especially the HtmlScraper class which is the main entry point to the API. 
+Again when more refactoring is happening, these tests can be boosted.

@@ -1,7 +1,9 @@
 <?php
 
 namespace Scraper\UniteStudents\Filter;
-
+/**
+ * Specific filter to take the room types out of array of htmls containing room types and prices
+ */
 class RetrieveFromDetailPage extends \Scraper\Filter\RetrieveFromDetailPage
 {
 
