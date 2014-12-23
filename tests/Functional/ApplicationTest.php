@@ -33,8 +33,9 @@ class ApplicationTest extends \ScraperTests\Lib\BaseTestCase
     public function test_SmokeTest_InvalidUrl()
     {
         chdir('..');
+        $realPath = realpath('tests/Assets');
         $out      = exec('php scrape.php extract tests/Assets/IDoNotExist --config=tests/Assets/test-config.php --format=json --out=foo.json');
-        $this->assertEquals("Could not open url /home/malte/bin/Scraper/tests/Assets/IDoNotExist.html", trim($out));
+        $this->assertEquals("Could not open url $realPath/IDoNotExist.html", trim($out));
     }
 
     public function test_SmokeTest_InvalidConfigFile()
