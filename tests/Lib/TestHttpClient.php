@@ -7,16 +7,15 @@ class TestHttpClient extends \Scraper\HtmlClient
 
     public function __construct()
     {
-        parent::__construct(TEST_ASSETS . 'liverpool/');
+        parent::__construct(TEST_ASSETS);
     }
-
 
     /*
      * rewrites the url to use the html in Assets
      */
     public function getHtml($url)
     {
-        return parent::getHtml(basename($url) . '.html');
+        return parent::getHtml($url . '.html');
     }
 
 }

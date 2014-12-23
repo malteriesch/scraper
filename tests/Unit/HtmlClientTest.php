@@ -10,7 +10,7 @@ class HtmlClientTest extends \ScraperTests\Lib\BaseTestCase
     public function test_SmokeTest()
     {
         $client = new HtmlClient(TEST_ASSETS);
-        $this->assertEquals(file_get_contents(TEST_ASSETS . 'sample.html'), $client->getHtml( 'sample.html'));
+        $this->assertEquals(file_get_contents(TEST_ASSETS . 'liverpool.html'), $client->getHtml( 'liverpool.html'));
     }
 
     function test_PagesGetCached()

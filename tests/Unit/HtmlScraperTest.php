@@ -9,7 +9,7 @@ class HtmlScraperTest extends \ScraperTests\Lib\BaseTestCase
 
     public function test_SmokeTest()
     {
-
+        $httpClient = new \ScraperTests\Lib\TestHttpClient();
         $configuration = [
             "default-filters" => [new \Scraper\Filter\Trim(), new \Scraper\Filter\CollapseWhiteSpace()],
             "item-selectors"  => [
@@ -23,7 +23,7 @@ class HtmlScraperTest extends \ScraperTests\Lib\BaseTestCase
                     'selector'  => '.listing-item__details a.listing-item__btn',
                     /* if attribute is ommitted, then by default the node value is used */
                     'attribute' => 'href',
-                    'filters'   => [new \Scraper\UniteStudents\Filter\RetrieveFromDetailPage('ul.rooms__list h3.tabs__tab__header__name', new \ScraperTests\Lib\TestHttpClient())]
+                    'filters'   => [new \Scraper\UniteStudents\Filter\RetrieveFromDetailPage('ul.rooms__list h3.tabs__tab__header__name', $httpClient)]
                 ]
             ],
             "list-selector"   => 'section.listing-filter ul.nav li'
@@ -76,7 +76,8 @@ class HtmlScraperTest extends \ScraperTests\Lib\BaseTestCase
                 'Room Type' => 'n/a'
             ],
         ];
-        $scraper        = new HtmlScraper(file_get_contents(TEST_ASSETS . 'sample.html'), $configuration);
+        
+        $scraper        = new HtmlScraper($httpClient->getHtml('liverpool'), $configuration);
         
         $this->assertEquals($expectedResult, $scraper->scrape());
     }
