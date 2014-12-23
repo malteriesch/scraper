@@ -23,8 +23,8 @@ class HtmlClient implements HtmlClientInterface
     public function getHtml($url)
     {
         if (!isset($this->pages[$url])) {
-            if (!file_exists($this->baseUrl . $url)){//covered in functional tests
-                throw new \Exception("Could not open url ".$this->baseUrl . $url);
+            if (strpos($this->baseUrl, 'http') === false && !file_exists($this->baseUrl . $url)) {//covered in functional tests
+                throw new \Exception("Could not open url " . $this->baseUrl . $url);
             }
             $this->pages[$url] = file_get_contents($this->baseUrl . $url);
         }
