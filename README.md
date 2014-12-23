@@ -20,7 +20,7 @@ composer install
 
 Running
 -------------------
-The simplest way to run it is:
+The simplest way to run it is (the csv file will be written to out.csv in the same folder:
 ```shell
 php scrape.php extract http://www.unite-students.com/liverpool 
 ```
