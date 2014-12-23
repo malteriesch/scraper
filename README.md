@@ -24,15 +24,21 @@ The simplest way to run it is (the csv file will be written to out.csv in the sa
 ```shell
 php scrape.php extract http://www.unite-students.com/liverpool 
 php scrape.php extract http://www.unite-students.com/manchester  --out=manchester.csv
+php scrape.php extract http://www.unite-students.com/manchester  --out=manchester.json --format=json
 cat out.csv
 cat manchester.csv
+cat manchester.json
 ```
 
-You can specify various parameters, as in the following (which uses a test configuration, a file system url and a custom output file
+You can specify various parameters, as in the following (which uses a test configuration, a file system url and a custom output file)
 ```shell
 php scrape.php extract tests/Assets/liverpool.html --config=tests/Assets/test-config.php --out=foo.csv
 
 ```
+Parameters are:
+* --config: path to config file. Defaults to config/default.php
+* --out: path to output file. Defaults to out.csv
+* --format: either json or csv, defaults to csv
 
 For help and command line parameters, you can run the following
 ```shell
