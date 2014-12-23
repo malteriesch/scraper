@@ -9,10 +9,10 @@ Installation
 * make sure that you have composer installed.
 * make sure that file_get_contents has the url wrapper enabled
 
-1. Go to a folder to which you have write permissions and run
+Go to a folder to which you have write permissions and run
 
 ```shell
-git clone https://github.com/malteriesch/scraper.git' 
+git clone https://github.com/malteriesch/scraper.git
 cd scraper
 composer install
 ```
