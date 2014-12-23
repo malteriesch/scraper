@@ -5,7 +5,7 @@ A simple Console Application to scrape data from a listing on a web page, potent
 Installation
 -------------------
 
-* Note that this is tested on Linux only.
+* note that this is tested on Linux only.
 * make sure that you have composer installed.
 * make sure that file_get_contents has the url wrapper enabled
 
@@ -23,6 +23,7 @@ Running
 The simplest way to run it is:
 ```shell
 php scrape.php extract http://www.unite-students.com/liverpool 
+php scrape.php extract http://www.unite-students.com/manchester  --out=manchester.csv
 ```
 
 You can specify various parameters, as in the following (which uses a test configuration, a file system url and a custom output file
@@ -41,6 +42,10 @@ php scrape.php extract
 
 It is possible to use the scraper outside an applicatin environment, see tests/Unit/HtmlScraperTest.php for an example
 
+Assumptions
+-------------------
+*Both a file path and a http url can be used, but the assumption is that the url does not have 
+*The 
 
 Technologies Used
 -------------------

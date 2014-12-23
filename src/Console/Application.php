@@ -55,7 +55,7 @@ class Application extends \ZF\Console\Application
         $this->initDefaultHttpClient($startUrl);
         $config = $this->getConfiguration($route->getMatchedParam('config'));
         
-        $scraper = new \Scraper\HtmlScraper($this->getHttpClient()->getHtml('liverpool'), $config);
+        $scraper = new \Scraper\HtmlScraper($this->getHttpClient()->getHtml(basename($startUrl)), $config);
 
         $scraped = $scraper->scrape();
         $converted = new \Scraper\Format\Csv();
