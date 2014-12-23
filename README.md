@@ -40,8 +40,11 @@ php scrape.php extract
 
 ```
 
-It is possible to use the scraper outside an applicatin environment, see tests/Unit/HtmlScraperTest.php for an example
+It is possible to use the scraper outside an application environment, see tests/Unit/HtmlScraperTest.php for an example
 
+Assumptions
+-------------------
+* Both a file path and a http url can be used, but the assumption is that the url has only one level, i.e. 'http://foo.com/listing' is ok, but 'http://foo.com/some-depper-path/listing' is not at present
 
 Technologies Used
 -------------------
