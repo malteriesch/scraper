@@ -9,6 +9,7 @@ Installation
 * make sure that you have composer installed.
 * make sure that file_get_contents has the url wrapper enabled
 * Minimum version is php 5.4 
+
 Go to a folder to which you have write permissions and run
 
 ```shell
