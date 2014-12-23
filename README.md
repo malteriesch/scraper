@@ -23,6 +23,7 @@ Running
 The simplest way to run it is (the csv file will be written to out.csv in the same folder:
 ```shell
 php scrape.php extract http://www.unite-students.com/liverpool 
+cat out.csv
 ```
 
 You can specify various parameters, as in the following (which uses a test configuration, a file system url and a custom output file
