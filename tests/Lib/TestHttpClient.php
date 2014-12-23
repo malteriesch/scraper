@@ -1,6 +1,6 @@
 <?php
 
-namespace ScraperTests\Lib;
+namespace Scrapertests\Lib;
 
 class TestHttpClient extends \Scraper\HtmlClient
 {
@@ -13,6 +13,7 @@ class TestHttpClient extends \Scraper\HtmlClient
     /*
      * rewrites the url to use the html in Assets
      */
+
     public function getHtml($url)
     {
         return parent::getHtml($url . '.html');

@@ -2,8 +2,6 @@
 
 namespace Scraper;
 
-
-
 class HtmlScraper
 {
 
@@ -11,13 +9,11 @@ class HtmlScraper
     private $config;
     private $query = null;
 
-    function __construct($html = null, $config = [])
+    public function __construct($html = null, $config = [])
     {
         $this->setHtml($html);
         $this->setConfig($config);
     }
-
-    
 
     public function scrape()
     {
@@ -28,13 +24,14 @@ class HtmlScraper
 
         $results = [];
 
-        //needed to make sure all elements are included. 
+        //needed to make sure all elements are included.
         //@TODO: there is probably a better way.
         $results[] = $this->getListItemArray($itemSelectorConfigs, $parser->getHtmlFromDomElement($listing->first()->getNode(0)));
 
         foreach ($listing->siblings() as $node) {
             $results[] = $this->getListItemArray($itemSelectorConfigs, $parser->getHtmlFromDomElement($node));
         }
+
         return $results;
     }
 
@@ -61,6 +58,7 @@ class HtmlScraper
             }
             $resultingItem[$name] = $content;
         }
+
         return $resultingItem;
     }
 
@@ -84,8 +82,8 @@ class HtmlScraper
     }
 
     /**
-     * by creating the Parser this way, it is still possible to later mock the Crawler 
-     * 
+     * by creating the Parser this way, it is still possible to later mock the Crawler
+     *
      * @return HtmlParser
      */
     protected function createHtmlParser()
@@ -94,7 +92,7 @@ class HtmlScraper
     }
 
     /**
-     * 
+     *
      * @return String
      */
     public function getHtml()
@@ -103,7 +101,7 @@ class HtmlScraper
     }
 
     /**
-     * 
+     *
      * @param String $html
      */
     public function setHtml($html)

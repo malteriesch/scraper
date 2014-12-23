@@ -1,7 +1,5 @@
 <?php
 
-use Zend\Filter\Callback as CallbackFilter;
-
 return [
     [
 

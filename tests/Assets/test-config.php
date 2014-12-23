@@ -1,6 +1,6 @@
 <?php
 
-define('TEST_ASSETS', __DIR__.'/'); 
+define('TEST_ASSETS', __DIR__.'/');
 //for our integration test, we want to use our asset files rather than hit the web site
 $this->setHttpClient(new \ScraperTests\Lib\TestHttpClient());
 

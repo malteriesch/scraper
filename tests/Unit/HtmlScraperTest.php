@@ -9,7 +9,7 @@ class HtmlScraperTest extends \ScraperTests\Lib\BaseTestCase
 
     public function test_SmokeTest()
     {
-        $httpClient = new \ScraperTests\Lib\TestHttpClient();
+        $httpClient    = new \ScraperTests\Lib\TestHttpClient();
         $configuration = [
             "default-filters" => [new \Scraper\Filter\Trim(), new \Scraper\Filter\CollapseWhiteSpace()],
             "item-selectors"  => [
@@ -31,54 +31,54 @@ class HtmlScraperTest extends \ScraperTests\Lib\BaseTestCase
 
         $expectedResult = [
             [
-                'Price' => 'From £99 per week',
-                'Name'  => 'LARCH HOUSE',
+                'Price'     => 'From £99 per week',
+                'Name'      => 'LARCH HOUSE',
                 'Room Type' => 'Basic non-en-suite, Classic non-en-suite, Premium range 1 non-en-suite, Premium range 1 one bedroom flat'
             ],
             [
-                'Price' => 'From £105 per week',
-                'Name'  => 'THE RAILYARD',
+                'Price'     => 'From £105 per week',
+                'Name'      => 'THE RAILYARD',
                 'Room Type' => 'Classic en-suite room, Premium range 1 en-suite room'
             ],
             [
-                'Price' => 'From £106 per week',
-                'Name'  => 'MYRTLE COURT',
+                'Price'     => 'From £106 per week',
+                'Name'      => 'MYRTLE COURT',
                 'Room Type' => 'Classic en-suite room'
             ],
             [
-                'Price' => 'From £115 per week',
-                'Name'  => 'LENNON STUDIOS',
+                'Price'     => 'From £115 per week',
+                'Name'      => 'LENNON STUDIOS',
                 'Room Type' => 'Classic en-suite room, Premium range 1 en-suite room, Basic studio, Classic studio, Premium range 1 studio'
             ],
             [
-                'Price' => 'From £116 per week',
-                'Name'  => 'GRAND CENTRAL',
+                'Price'     => 'From £116 per week',
+                'Name'      => 'GRAND CENTRAL',
                 'Room Type' => 'Basic accessible en-suite, Premium range 1 accessible studio, Classic en-suite room, Basic en-suite room, Premium range 1 en-suite room, Classic non-en-suite room, Classic studio, Premium range 1 studio'
             ],
             [
-                'Price' => 'From £121 per week',
-                'Name'  => 'CAPITAL GATE',
+                'Price'     => 'From £121 per week',
+                'Name'      => 'CAPITAL GATE',
                 'Room Type' => 'Classic en-suite room, Premium range 1 en-suite room, Classic studio'
             ],
             [
-                'Price' => 'From £129 per week',
-                'Name'  => 'CAMBRIDGE COURT',
+                'Price'     => 'From £129 per week',
+                'Name'      => 'CAMBRIDGE COURT',
                 'Room Type' => 'Classic en-suite room'
             ],
             [
-                'Price' => 'Book via university',
-                'Name'  => 'APOLLO COURT',
+                'Price'     => 'Book via university',
+                'Name'      => 'APOLLO COURT',
                 'Room Type' => 'n/a'
             ],
             [
-                'Price' => 'Book via university',
-                'Name'  => 'ARRAD HOUSE',
+                'Price'     => 'Book via university',
+                'Name'      => 'ARRAD HOUSE',
                 'Room Type' => 'n/a'
             ],
         ];
-        
-        $scraper        = new HtmlScraper($httpClient->getHtml('liverpool'), $configuration);
-        
+
+        $scraper = new HtmlScraper($httpClient->getHtml('liverpool'), $configuration);
+
         $this->assertEquals($expectedResult, $scraper->scrape());
     }
 

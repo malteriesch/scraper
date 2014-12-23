@@ -2,9 +2,11 @@
 
 namespace Scraper\Filter;
 
-interface FilterInterface {
+interface FilterInterface
+{
+
     /**
-     * @param String $value the value to be filtered
+     * @param  String $value the value to be filtered
      * @return String filtered result
      */
     public function __invoke($value);

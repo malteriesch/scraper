@@ -1,17 +1,20 @@
 <?php
 
-namespace ScraperTests\Lib;
+namespace Scrapertests\Lib;
 
 use org\bovigo\vfs\vfsStreamWrapper;
 
-class BaseTestCase extends \PHPUnit_Framework_TestCase  
+class BaseTestCase extends \PHPUnit_Framework_TestCase
 {
+
     public function setUp()
     {
         vfsStreamWrapper::register();
     }
+
     public function teardown()
     {
         \Mockery::close();
     }
+
 }

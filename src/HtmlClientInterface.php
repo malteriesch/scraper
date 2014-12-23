@@ -1,8 +1,9 @@
 <?php
+
 namespace Scraper;
 
 interface HtmlClientInterface
 {
-    function getHtml($url);
-    
+
+    public function getHtml($url);
 }
