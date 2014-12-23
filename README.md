@@ -29,6 +29,12 @@ cat out.csv
 cat manchester.csv
 cat manchester.json
 ```
+Running Tests
+-------------------
+```shell
+cd tests
+phpunit
+```
 
 You can specify various parameters, as in the following (which uses a test configuration, a file system url and a custom output file)
 ```shell
