@@ -2,7 +2,7 @@
 
 namespace Scraper;
 
-use Symfony\Component\DomCrawler\Crawler;
+
 
 class HtmlScraper
 {
@@ -17,21 +17,23 @@ class HtmlScraper
         $this->setConfig($config);
     }
 
-    protected function getHtmlFromDomElement(\DOMElement $node)
-    {
-        return $node->ownerDocument->saveXML($node);
-    }
+    
 
     public function scrape()
     {
-        $listSelector  = $this->getConfig()['list-selector'];
+        $parser              = $this->createHtmlParser();
+        $listSelector        = $this->getConfig()['list-selector'];
         $itemSelectorConfigs = $this->getConfig()['item-selectors'];
-        $listing       = $this->parse($this->getHtml(), $listSelector);
+        $listing             = $parser->parse($this->getHtml(), $listSelector);
 
         $results = [];
 
+        //needed to make sure all elements are included. 
+        //@TODO: there is probably a better way.
+        $results[] = $this->getListItemArray($itemSelectorConfigs, $parser->getHtmlFromDomElement($listing->first()->getNode(0)));
+
         foreach ($listing->siblings() as $node) {
-            $results[] = $this->getListItemArray($itemSelectorConfigs,$this->getHtmlFromDomElement($node));
+            $results[] = $this->getListItemArray($itemSelectorConfigs, $parser->getHtmlFromDomElement($node));
         }
         return $results;
     }
@@ -41,15 +43,22 @@ class HtmlScraper
      */
     protected function getListItemArray($itemSelectorConfigs, $nodeHtml)
     {
+        $parser = $this->createHtmlParser();
+
         $resultingItem = [];
         foreach ($itemSelectorConfigs as $name => $itemSelectorConfig) {
-            $content = trim($this->parse($nodeHtml, $itemSelectorConfig['selector'])->html());
-
+            $parsed = $parser->parse($nodeHtml, $itemSelectorConfig['selector']);
+            if (isset($itemSelectorConfig['attribute'])) {
+                $content = $parser->getNodeAttribute($parsed, $itemSelectorConfig['attribute']);
+            } else {
+                $content = $parser->getNodeValue($parsed);
+            }
             if (isset($this->getConfig()['default-filters'])) {
                 $content = $this->runFilters($content, $this->getConfig()['default-filters']);
             }
-
-
+            if (isset($itemSelectorConfig['filters'])) {
+                $content = $this->runFilters($content, $itemSelectorConfig['filters']);
+            }
             $resultingItem[$name] = $content;
         }
         return $resultingItem;
@@ -64,19 +73,6 @@ class HtmlScraper
         return $content;
     }
 
-    /**
-     * 
-     * @param String $html
-     * @param String $cssSelector
-     * @return \Zend\Dom\NodeList
-     */
-    protected function parse($html, $cssSelector)
-    {
-        $crawler = $this->createCrawler();
-        $crawler->addHtmlContent($html);
-        return $crawler->filter($cssSelector);
-    }
-
     public function getConfig()
     {
         return $this->config;
@@ -88,13 +84,13 @@ class HtmlScraper
     }
 
     /**
-     * by creating the crawler this way, it is still possible to later mock the Crawler 
+     * by creating the Parser this way, it is still possible to later mock the Crawler 
      * 
-     * @return Crawler
+     * @return HtmlParser
      */
-    protected function createCrawler()
+    protected function createHtmlParser()
     {
-        return new Crawler();
+        return new HtmlParser();
     }
 
     /**
